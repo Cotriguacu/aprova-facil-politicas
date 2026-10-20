@@ -18,10 +18,11 @@ useHead({
   aprovações que já existem nos sistemas da cooperativa (Senior e TIP). O tratamento segue a Lei Geral de
   Proteção de Dados Pessoais (Lei nº 13.709/2018 — LGPD).</p>
 
-  <h2 id="controlador">1. Controlador e encarregado</h2>
+  <h2 id="controlador">1. Controlador e contato</h2>
   <p><strong>Controlador:</strong> {{ empresa.nome }}, CNPJ {{ empresa.cnpj }}, {{ empresa.endereco }}.</p>
-  <p><strong>Encarregado pelo tratamento de dados pessoais (DPO):</strong>
-    <a :href="`mailto:${contato.encarregado}`">{{ contato.encarregado }}</a>.</p>
+  <p><strong>Contato para assuntos de dados pessoais:</strong> {{ contato.responsavelTi }} —
+    <a :href="`mailto:${contato.ti}`">{{ contato.ti }}</a>, que encaminha os pedidos ao encarregado pelo
+    tratamento de dados pessoais da cooperativa.</p>
 
   <h2 id="dados">2. Dados que tratamos</h2>
   <div class="tabela">
@@ -91,8 +92,8 @@ useHead({
   eles; correção de dados incompletos ou desatualizados; informações sobre compartilhamento; e
   anonimização, bloqueio ou eliminação de dados desnecessários ou excessivos. Pedidos de eliminação podem
   ser limitados pela guarda necessária para auditoria (seção 5) e por obrigações legais da cooperativa.</p>
-  <p>Envie o seu pedido ao encarregado:
-    <a :href="`mailto:${contato.encarregado}`">{{ contato.encarregado }}</a>. Você também pode apresentar
+  <p>Envie o seu pedido à {{ contato.responsavelTi }}:
+    <a :href="`mailto:${contato.ti}`">{{ contato.ti }}</a>. Você também pode apresentar
     reclamação à Autoridade Nacional de Proteção de Dados (ANPD).</p>
   <p>Algumas ações estão sempre ao seu alcance no próprio aplicativo: apagar as senhas do Senior e do TIP
   (Perfil → Credenciais), desativar a biometria (Perfil → Biometria) e desativar as notificações nas

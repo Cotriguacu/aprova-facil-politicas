@@ -12,9 +12,10 @@ export const app = {
 }
 
 export const contato = {
-  // Encarregado pelo tratamento de dados pessoais (LGPD, art. 41) e canal da TI.
-  encarregado: 'john.moraes@cotriguacu.com.br',
+  // Coordenação de TI: canal do app e de pedidos sobre dados pessoais. O
+  // encarregado da cooperativa (LGPD, art. 41) recebe por esse canal.
   ti: 'john.moraes@cotriguacu.com.br',
+  responsavelTi: 'Coordenação de Tecnologia da Informação',
 }
 
 export const politica = {
