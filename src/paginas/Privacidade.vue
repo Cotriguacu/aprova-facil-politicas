@@ -30,7 +30,7 @@ const sumario = [
   <p>Esta política explica quais dados pessoais o aplicativo <strong>{{ app.nome }}</strong> trata, para
   quê, por quanto tempo e quais são os seus direitos. O aplicativo é de <strong>uso interno</strong>,
   exclusivo de colaboradores da {{ empresa.nome }} com acesso liberado, e serve para consultar e decidir
-  aprovações que já existem nos sistemas da cooperativa (Senior e TIP). O tratamento segue a Lei Geral de
+  aprovações que já existem nos sistemas da cooperativa (Senior, TIP e Patrimônio). O tratamento segue a Lei Geral de
   Proteção de Dados Pessoais (Lei nº 13.709/2018 — LGPD).</p>
 
   <h2 id="controlador">1. Controlador e contato</h2>
@@ -47,7 +47,7 @@ const sumario = [
         <tr><td>Nome, usuário de rede, e-mail corporativo, matrícula e filial</td><td>Active Directory e cadastro da cooperativa</td><td>Identificar você e mostrar as aprovações que são suas</td></tr>
         <tr><td>Código de usuário no Senior e no TIP</td><td>Sistemas Senior e TIP</td><td>Buscar a sua fila e registrar as suas decisões</td></tr>
         <tr><td>Usuário e senha pessoais do Senior e do TIP, se você os cadastrar</td><td>Informados por você no aplicativo</td><td>Registrar a decisão no sistema de origem em seu nome</td></tr>
-        <tr><td>Dados dos documentos pendentes (número, valor, fornecedor, solicitante, datas, observações)</td><td>Sistemas Senior e TIP</td><td>Mostrar o que aguarda a sua decisão</td></tr>
+        <tr><td>Dados dos documentos pendentes (número, valor, fornecedor, solicitante, bens, unidade, datas, observações)</td><td>Sistemas Senior, TIP e Patrimônio</td><td>Mostrar o que aguarda a sua decisão</td></tr>
         <tr><td>Decisões tomadas, data, motivo e observação</td><td>Uso do aplicativo</td><td>Registro, histórico e auditoria das aprovações</td></tr>
         <tr><td>Identificador do aparelho para notificações, modelo do aparelho e versão do aplicativo</td><td>Seu aparelho</td><td>Enviar avisos de novas aprovações e manter o aplicativo atualizado</td></tr>
         <tr><td>Datas de acesso e registros técnicos (logs)</td><td>Uso do aplicativo</td><td>Segurança, controle de acesso e suporte</td></tr>
@@ -72,7 +72,7 @@ const sumario = [
 
   <h2 id="compartilhamento">4. Compartilhamento</h2>
   <p>Os dados permanecem no ambiente da {{ empresa.nome }} e nos sistemas internos de onde vêm as
-  aprovações (Senior e TIP). As notificações são entregues pelo <strong>Firebase Cloud Messaging</strong>,
+  aprovações (Senior, TIP e Patrimônio). As notificações são entregues pelo <strong>Firebase Cloud Messaging</strong>,
   serviço do Google que atua como <strong>operador</strong> em nome da cooperativa e recebe apenas o
   identificador do aparelho e o texto do aviso, sem credenciais. Não vendemos, alugamos nem cedemos dados
   pessoais a terceiros.</p>

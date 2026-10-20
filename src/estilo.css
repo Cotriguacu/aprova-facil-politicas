@@ -354,3 +354,30 @@ tbody tr:last-child td { border-bottom: 0; }
   h2 { break-after: avoid; }
   tr { break-inside: avoid; }
 }
+
+/* ---------- Hub: sistemas ligados ---------- */
+.sistemas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.sistema {
+  position: relative; overflow: hidden; padding: 24px 24px 20px; border-radius: var(--raio);
+  background: var(--cartao); border: 1px solid var(--linha);
+  transition: transform var(--transicao), box-shadow var(--transicao), border-color var(--transicao);
+}
+.sistema::before {
+  content: ""; position: absolute; left: 0; top: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--verde), var(--acento));
+  transform: scaleX(.25); transform-origin: left; transition: transform 300ms cubic-bezier(.2, .7, .3, 1);
+}
+.sistema:hover { transform: translateY(-4px); box-shadow: var(--sombra-forte); border-color: var(--verde-suave); }
+.sistema:hover::before { transform: scaleX(1); }
+.sistema-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.sistema h3 { margin: 0; font-size: 1.25rem; }
+.sistema-sigla {
+  padding: 4px 10px; border-radius: 999px; background: var(--verde-claro); color: var(--verde);
+  font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+}
+.sistema ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.sistema li { position: relative; padding-left: 20px; color: var(--suave); }
+.sistema li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--verde-vivo); }
+.secao-titulo-espaco { margin-top: 72px; }
+@media (max-width: 960px) { .sistemas { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .sistema:hover { transform: none; } }

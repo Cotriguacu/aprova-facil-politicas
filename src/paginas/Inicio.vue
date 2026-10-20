@@ -11,12 +11,19 @@ useHead({
 const base = import.meta.env.BASE_URL
 
 const recursos = [
-  { icone: 'fila', titulo: 'Fila única', texto: 'Ordens de compra, cotações, requisições e solicitações do Senior, e viagens e reservas de veículos do TIP, num só lugar.' },
+  { icone: 'fila', titulo: 'Fila única', texto: 'Tudo o que aguarda a sua decisão nos sistemas da cooperativa, numa fila só, ordenada e com os atrasados em destaque.' },
   { icone: 'escudo', titulo: 'Decisão rastreável', texto: 'Cada aprovação ou reprovação é registrada no sistema de origem em nome de quem decidiu.' },
   { icone: 'sino', titulo: 'Aviso na hora', texto: 'Notificação quando um item novo chega, que some sozinha quando ele é decidido em outro lugar.' },
   { icone: 'cadeado', titulo: 'Entrada segura', texto: 'Usuário de rede da cooperativa e, depois, a digital ou o PIN do aparelho.' },
   { icone: 'caixa', titulo: 'Em lote', texto: 'Aprove vários itens de uma vez ou reprove com um motivo pronto ou escrito por você.' },
   { icone: 'historico', titulo: 'Histórico', texto: 'Suas decisões dos últimos 7 dias, 30 dias ou do ano, com o tempo médio de resposta.' },
+]
+
+// Sistemas ligados ao hub. Sistema novo integrado ao app entra aqui.
+const sistemas = [
+  { nome: 'Senior', sigla: 'ERP', itens: ['Ordens de compra', 'Cotações', 'Requisições', 'Solicitações de compra'] },
+  { nome: 'TIP', sigla: 'Intranet', itens: ['Solicitações de viagem', 'Reservas de veículos'] },
+  { nome: 'Patrimônio', sigla: 'Bens', itens: ['Baixas de bens', 'Transferências de bens'] },
 ]
 
 const passos = [
@@ -33,8 +40,9 @@ const passos = [
       <div class="heroi-texto">
         <p class="etiqueta">Uso interno · {{ empresa.nome }}</p>
         <h1>Suas aprovações, <span>direto do celular.</span></h1>
-        <p class="heroi-resumo">O {{ app.nome }} reúne num só lugar o que aguarda a sua decisão no Senior e
-          no TIP — para que nada fique parado esperando você chegar ao computador.</p>
+        <p class="heroi-resumo">Um hub de aprovações: o {{ app.nome }} reúne num só lugar o que aguarda a sua
+          decisão no Senior, no TIP e no Patrimônio — para que nada fique parado esperando você chegar ao
+          computador.</p>
         <div class="acoes">
           <a class="botao botao-primario" href="#acesso">Como obter acesso <Icone nome="seta" :tamanho="18" /></a>
           <RouterLink class="botao botao-secundario" to="/privacidade">Política de Privacidade</RouterLink>
@@ -59,7 +67,22 @@ const passos = [
         usa o usuário de rede da cooperativa, e o acesso é liberado pela área de Tecnologia da Informação.</p>
     </div>
 
-    <h2 class="secao-titulo">O que você faz no app</h2>
+    <h2 class="secao-titulo">Um hub para os sistemas da cooperativa</h2>
+    <p class="secao-resumo">Cada sistema continua sendo a origem da aprovação. O app traz as pendências de
+      todos para uma fila só e registra a sua decisão de volta, em seu nome.</p>
+    <div class="sistemas">
+      <article v-for="s in sistemas" :key="s.nome" class="sistema">
+        <div class="sistema-topo">
+          <h3>{{ s.nome }}</h3>
+          <span class="sistema-sigla">{{ s.sigla }}</span>
+        </div>
+        <ul>
+          <li v-for="item in s.itens" :key="item">{{ item }}</li>
+        </ul>
+      </article>
+    </div>
+
+    <h2 class="secao-titulo secao-titulo-espaco">O que você faz no app</h2>
     <p class="secao-resumo">Tudo o que você precisa para decidir com segurança, sem abrir o computador.</p>
     <div class="recursos">
       <article v-for="r in recursos" :key="r.titulo" class="recurso">
