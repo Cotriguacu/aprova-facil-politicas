@@ -1,16 +1,29 @@
 <script setup>
 import { useHead } from '@unhead/vue'
+import PaginaDocumento from '../componentes/PaginaDocumento.vue'
 import { app, contato, empresa, politica } from '../dados.js'
 
 useHead({
   title: 'Termos de Uso',
   meta: [{ name: 'description', content: `Regras de uso do ${app.nome}, aplicativo interno da Cotriguaçu.` }],
 })
+
+const sumario = [
+  { id: 'sobre', titulo: 'Sobre o aplicativo' },
+  { id: 'uso', titulo: 'Uso pessoal' },
+  { id: 'decisoes', titulo: 'Valor das decisões' },
+  { id: 'aparelho', titulo: 'Aparelho perdido' },
+  { id: 'acesso', titulo: 'Liberação e encerramento' },
+  { id: 'disponibilidade', titulo: 'Disponibilidade' },
+  { id: 'privacidade', titulo: 'Privacidade' },
+  { id: 'alteracoes', titulo: 'Alterações' },
+  { id: 'legislacao', titulo: 'Legislação aplicável' },
+]
 </script>
 
 <template>
-  <h1>Termos de Uso</h1>
-  <p class="meta">{{ app.nome }} · Versão {{ politica.versao }} · Vigente desde {{ politica.vigencia }}</p>
+  <PaginaDocumento titulo="Termos de Uso" resumo="As regras de uso do aplicativo, que é pessoal, intransferível e exclusivo dos colaboradores."
+    :versao="politica.versao" :vigencia="politica.vigencia" :sumario="sumario">
 
   <h2 id="sobre">1. Sobre o aplicativo</h2>
   <p>O {{ app.nome }} é um aplicativo corporativo da {{ empresa.nome }}, de uso restrito a colaboradores
@@ -59,4 +72,5 @@ useHead({
   <h2 id="legislacao">9. Legislação aplicável</h2>
   <p>Estes termos são regidos pelas leis da República Federativa do Brasil. Dúvidas:
     <a :href="`mailto:${contato.ti}`">{{ contato.ti }}</a>.</p>
+  </PaginaDocumento>
 </template>

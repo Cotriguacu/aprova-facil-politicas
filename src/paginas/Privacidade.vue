@@ -1,16 +1,31 @@
 <script setup>
 import { useHead } from '@unhead/vue'
+import PaginaDocumento from '../componentes/PaginaDocumento.vue'
 import { app, contato, empresa, politica } from '../dados.js'
 
 useHead({
   title: 'Política de Privacidade',
   meta: [{ name: 'description', content: `Como o ${app.nome} trata os dados pessoais dos colaboradores da Cotriguaçu, conforme a LGPD.` }],
 })
+
+const sumario = [
+  { id: 'controlador', titulo: 'Controlador e contato' },
+  { id: 'dados', titulo: 'Dados que tratamos' },
+  { id: 'base-legal', titulo: 'Bases legais' },
+  { id: 'compartilhamento', titulo: 'Compartilhamento' },
+  { id: 'retencao', titulo: 'Por quanto tempo guardamos' },
+  { id: 'seguranca', titulo: 'Segurança' },
+  { id: 'direitos', titulo: 'Seus direitos' },
+  { id: 'fim-do-acesso', titulo: 'Quando o seu acesso termina' },
+  { id: 'criancas', titulo: 'Crianças e adolescentes' },
+  { id: 'este-site', titulo: 'Este site' },
+  { id: 'alteracoes', titulo: 'Alterações' },
+]
 </script>
 
 <template>
-  <h1>Política de Privacidade</h1>
-  <p class="meta">{{ app.nome }} · Versão {{ politica.versao }} · Vigente desde {{ politica.vigencia }}</p>
+  <PaginaDocumento titulo="Política de Privacidade" resumo="Quais dados o app trata, para quê, por quanto tempo e quais são os seus direitos, conforme a LGPD."
+    :versao="politica.versao" :vigencia="politica.vigencia" :sumario="sumario">
 
   <p>Esta política explica quais dados pessoais o aplicativo <strong>{{ app.nome }}</strong> trata, para
   quê, por quanto tempo e quais são os seus direitos. O aplicativo é de <strong>uso interno</strong>,
@@ -117,4 +132,5 @@ useHead({
   <h2 id="alteracoes">11. Alterações desta política</h2>
   <p>Esta política pode ser atualizada. A versão vigente fica sempre neste endereço, com a data no topo.
   Mudanças relevantes também são apresentadas no aplicativo para um novo aceite.</p>
+  </PaginaDocumento>
 </template>

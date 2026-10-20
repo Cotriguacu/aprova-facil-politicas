@@ -1,63 +1,115 @@
 <script setup>
 import { useHead } from '@unhead/vue'
-import { app, contato } from '../dados.js'
+import Icone from '../componentes/Icone.vue'
+import { app, contato, empresa } from '../dados.js'
 
 useHead({
   title: '',
-  meta: [{ name: 'description', content: 'Aplicativo de aprovações de uso interno dos colaboradores da Cotriguaçu Cooperativa Central.' }],
+  meta: [{ name: 'description', content: `Aplicativo de aprovações de uso interno dos colaboradores da ${empresa.nome}.` }],
 })
 
 const base = import.meta.env.BASE_URL
+
+const recursos = [
+  { icone: 'fila', titulo: 'Fila única', texto: 'Ordens de compra, cotações, requisições e solicitações do Senior, e viagens e reservas de veículos do TIP, num só lugar.' },
+  { icone: 'escudo', titulo: 'Decisão rastreável', texto: 'Cada aprovação ou reprovação é registrada no sistema de origem em nome de quem decidiu.' },
+  { icone: 'sino', titulo: 'Aviso na hora', texto: 'Notificação quando um item novo chega, que some sozinha quando ele é decidido em outro lugar.' },
+  { icone: 'cadeado', titulo: 'Entrada segura', texto: 'Usuário de rede da cooperativa e, depois, a digital ou o PIN do aparelho.' },
+  { icone: 'caixa', titulo: 'Em lote', texto: 'Aprove vários itens de uma vez ou reprove com um motivo pronto ou escrito por você.' },
+  { icone: 'historico', titulo: 'Histórico', texto: 'Suas decisões dos últimos 7 dias, 30 dias ou do ano, com o tempo médio de resposta.' },
+]
+
+const passos = [
+  { titulo: 'Instale', texto: `Baixe o ${app.nome} pelo Google Play, pelo link enviado pela TI.` },
+  { titulo: 'Entre', texto: 'Use o seu usuário e a senha de rede da Cotriguaçu.' },
+  { titulo: 'Liberação', texto: 'Aprovadores cadastrados entram direto; nos demais casos, um administrador libera o primeiro acesso.' },
+  { titulo: 'Aceite e use', texto: 'Leia e aceite os Termos de Uso e o Aviso de Privacidade no aplicativo.' },
+]
 </script>
 
 <template>
-  <div class="heroi">
-    <img :src="`${base}icone.png`" :alt="`Ícone do ${app.nome}`" width="88" height="88">
-    <div>
-      <h1>{{ app.nome }}</h1>
-      <p class="meta">Aplicativo de aprovações dos colaboradores da Cotriguaçu Cooperativa Central</p>
+  <section class="heroi">
+    <div class="largura heroi-grade">
+      <div class="heroi-texto">
+        <p class="etiqueta">Uso interno · {{ empresa.nome }}</p>
+        <h1>Suas aprovações, <span>direto do celular.</span></h1>
+        <p class="heroi-resumo">O {{ app.nome }} reúne num só lugar o que aguarda a sua decisão no Senior e
+          no TIP — para que nada fique parado esperando você chegar ao computador.</p>
+        <div class="acoes">
+          <a class="botao botao-primario" href="#acesso">Como obter acesso <Icone nome="seta" :tamanho="18" /></a>
+          <RouterLink class="botao botao-secundario" to="/privacidade">Política de Privacidade</RouterLink>
+        </div>
+      </div>
+
+      <div class="heroi-celulares" aria-hidden="true">
+        <div class="celular celular-atras">
+          <img :src="`${base}tela-fila.webp`" alt="" width="540" height="1110" loading="lazy">
+        </div>
+        <div class="celular celular-frente">
+          <img :src="`${base}tela-painel.webp`" alt="" width="540" height="1110" fetchpriority="high">
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="destaque">
-    <p><strong>Uso interno.</strong> O Aprova Fácil é exclusivo para colaboradores da Cotriguaçu com
-    acesso liberado pela área de Tecnologia da Informação. Não é possível criar conta pelo aplicativo:
-    a entrada usa o usuário de rede da cooperativa.</p>
-  </div>
+  <section class="largura secao">
+    <div class="aviso-interno">
+      <Icone nome="escudo" :tamanho="22" />
+      <p><strong>Exclusivo para colaboradores.</strong> Não é possível criar conta pelo aplicativo: a entrada
+        usa o usuário de rede da cooperativa, e o acesso é liberado pela área de Tecnologia da Informação.</p>
+    </div>
 
-  <p>O Aprova Fácil reúne num só lugar as aprovações que aguardam o colaborador nos sistemas da
-  cooperativa e permite decidir pelo celular, com o mesmo registro que seria feito na tela do sistema
-  de origem.</p>
+    <h2 class="secao-titulo">O que você faz no app</h2>
+    <p class="secao-resumo">Tudo o que você precisa para decidir com segurança, sem abrir o computador.</p>
+    <div class="recursos">
+      <article v-for="r in recursos" :key="r.titulo" class="recurso">
+        <span class="recurso-icone"><Icone :nome="r.icone" :tamanho="22" /></span>
+        <h3>{{ r.titulo }}</h3>
+        <p>{{ r.texto }}</p>
+      </article>
+    </div>
+  </section>
 
-  <div class="cartoes">
-    <section class="cartao">
-      <h3>Fila única</h3>
-      <p>Ordens de compra, cotações, requisições e solicitações do Senior, e viagens e reservas de veículos do TIP.</p>
-    </section>
-    <section class="cartao">
-      <h3>Decisão rastreável</h3>
-      <p>Cada aprovação ou reprovação é registrada no sistema de origem em nome de quem decidiu.</p>
-    </section>
-    <section class="cartao">
-      <h3>Aviso na hora</h3>
-      <p>Notificação quando um item novo chega, que some sozinha quando ele é decidido em outro lugar.</p>
-    </section>
-    <section class="cartao">
-      <h3>Entrada segura</h3>
-      <p>Usuário de rede da cooperativa e, depois, a digital ou o PIN do aparelho.</p>
-    </section>
-  </div>
+  <section class="faixa">
+    <div class="largura faixa-grade">
+      <div class="celular celular-faixa" aria-hidden="true">
+        <img :src="`${base}tela-detalhe.webp`" alt="" width="540" height="1110" loading="lazy">
+      </div>
+      <div>
+        <h2 class="secao-titulo">Cada decisão, em seu nome</h2>
+        <p>Aprovar ou reprovar pelo Aprova Fácil tem o mesmo efeito de decidir na tela do sistema de origem.
+          A decisão é registrada com a sua credencial pessoal — nunca com um usuário genérico.</p>
+        <ul class="lista-check">
+          <li>Conexão protegida (HTTPS) do aparelho até o servidor da cooperativa</li>
+          <li>Senhas dos sistemas guardadas cifradas, nunca no aparelho</li>
+          <li>Biometria verificada pelo próprio aparelho</li>
+          <li>Sem anúncios e sem venda de dados</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-  <h2>Como obter acesso</h2>
-  <ol>
-    <li>Instale o {{ app.nome }} pelo Google Play, pelo link enviado pela TI.</li>
-    <li>Entre com o seu usuário e a senha de rede da Cotriguaçu.</li>
-    <li>Aprovadores cadastrados nos sistemas têm o acesso liberado automaticamente; nos demais casos, o
-      primeiro acesso aguarda a liberação de um administrador.</li>
-    <li>Leia e aceite os Termos de Uso e o Aviso de Privacidade apresentados no aplicativo.</li>
-  </ol>
+  <section id="acesso" class="largura secao">
+    <h2 class="secao-titulo">Como obter acesso</h2>
+    <ol class="passos">
+      <li v-for="(p, i) in passos" :key="p.titulo" class="passo">
+        <span class="passo-numero">{{ i + 1 }}</span>
+        <h3>{{ p.titulo }}</h3>
+        <p>{{ p.texto }}</p>
+      </li>
+    </ol>
+  </section>
 
-  <h2>Suporte</h2>
-  <p>Dúvidas, problemas de acesso e pedidos relacionados aos seus dados:
-    <a :href="`mailto:${contato.ti}`">{{ contato.ti }}</a>.</p>
+  <section class="largura secao">
+    <div class="contato-cartao">
+      <div>
+        <h2 class="secao-titulo">Precisa de ajuda?</h2>
+        <p>Dúvidas, problemas de acesso e pedidos relacionados aos seus dados: fale com a
+          {{ contato.responsavelTi }}.</p>
+      </div>
+      <a class="botao botao-primario" :href="`mailto:${contato.ti}`">
+        <Icone nome="email" :tamanho="18" /> {{ contato.ti }}
+      </a>
+    </div>
+  </section>
 </template>
