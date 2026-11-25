@@ -1,7 +1,7 @@
 <script setup>
 import { useHead } from '@unhead/vue'
 import Icone from '../componentes/Icone.vue'
-import { app, contato, empresa } from '../dados.js'
+import { app, contato, empresa, lojas } from '../dados.js'
 
 useHead({
   title: '',
@@ -13,8 +13,8 @@ const base = import.meta.env.BASE_URL
 const recursos = [
   { icone: 'fila', titulo: 'Fila única', texto: 'Tudo o que aguarda a sua decisão nos sistemas da cooperativa, numa fila só, ordenada e com os atrasados em destaque.' },
   { icone: 'escudo', titulo: 'Decisão rastreável', texto: 'Cada aprovação ou reprovação é registrada no sistema de origem em nome de quem decidiu.' },
-  { icone: 'sino', titulo: 'Aviso na hora', texto: 'Notificação quando um item novo chega, que some sozinha quando ele é decidido em outro lugar.' },
-  { icone: 'cadeado', titulo: 'Entrada segura', texto: 'Usuário de rede da cooperativa e, depois, a digital ou o PIN do aparelho.' },
+  { icone: 'sino', titulo: 'Aviso na hora', texto: 'Notificação no celular assim que um item novo chega para a sua decisão.' },
+  { icone: 'cadeado', titulo: 'Entrada segura', texto: 'Usuário de rede da cooperativa e, depois, a digital, o rosto ou o código do aparelho.' },
   { icone: 'caixa', titulo: 'Em lote', texto: 'Aprove vários itens de uma vez ou reprove com um motivo pronto ou escrito por você.' },
   { icone: 'historico', titulo: 'Histórico', texto: 'Suas decisões dos últimos 7 dias, 30 dias ou do ano, com o tempo médio de resposta.' },
 ]
@@ -27,7 +27,7 @@ const sistemas = [
 ]
 
 const passos = [
-  { titulo: 'Instale', texto: `Baixe o ${app.nome} pelo Google Play, pelo link enviado pela TI.` },
+  { titulo: 'Instale', texto: `Baixe o ${app.nome} na Google Play (Android) ou na App Store (iPhone).` },
   { titulo: 'Entre', texto: 'Use o seu usuário e a senha de rede da Cotriguaçu.' },
   { titulo: 'Liberação', texto: 'Aprovadores cadastrados entram direto; nos demais casos, um administrador libera o primeiro acesso.' },
   { titulo: 'Aceite e use', texto: 'Leia e aceite os Termos de Uso e o Aviso de Privacidade no aplicativo.' },
@@ -121,6 +121,14 @@ const passos = [
         <p>{{ p.texto }}</p>
       </li>
     </ol>
+    <div class="lojas">
+      <a class="botao botao-primario" :href="lojas.googlePlay" target="_blank" rel="noopener">
+        Baixar na Google Play <Icone nome="seta" :tamanho="18" />
+      </a>
+      <a class="botao botao-primario" :href="lojas.appStore" target="_blank" rel="noopener">
+        Baixar na App Store <Icone nome="seta" :tamanho="18" />
+      </a>
+    </div>
   </section>
 
   <section class="largura secao">

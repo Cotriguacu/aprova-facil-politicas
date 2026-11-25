@@ -74,13 +74,15 @@ const sumario = [
   <p>Os dados permanecem no ambiente da {{ empresa.nome }} e nos sistemas internos de onde vêm as
   aprovações (Senior, TIP e Patrimônio). As notificações são entregues pelo <strong>Firebase Cloud Messaging</strong>,
   serviço do Google que atua como <strong>operador</strong> em nome da cooperativa e recebe apenas o
-  identificador do aparelho e o texto do aviso, sem credenciais. Não vendemos, alugamos nem cedemos dados
-  pessoais a terceiros.</p>
+  identificador do aparelho e o texto do aviso, sem credenciais. No iPhone, a entrega passa também pelo
+  <strong>serviço de notificações da Apple (APNs)</strong>, com os mesmos dados. Não vendemos, alugamos
+  nem cedemos dados pessoais a terceiros.</p>
 
   <h3>Transferência internacional</h3>
-  <p>A infraestrutura do Firebase Cloud Messaging pode processar o identificador do aparelho e o texto do
-  aviso em servidores fora do Brasil. Essa transferência é limitada ao necessário para entregar a
-  notificação e segue as garantias contratuais do Google para proteção de dados (LGPD, art. 33).</p>
+  <p>A infraestrutura do Firebase Cloud Messaging e, no iPhone, a do serviço de notificações da Apple
+  podem processar o identificador do aparelho e o texto do aviso em servidores fora do Brasil. Essa
+  transferência é limitada ao necessário para entregar a notificação e segue as garantias contratuais
+  do Google e da Apple para proteção de dados (LGPD, art. 33).</p>
 
   <h2 id="retencao">5. Por quanto tempo guardamos</h2>
   <div class="tabela">

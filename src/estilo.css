@@ -217,6 +217,7 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -.02em; }
   transition: transform var(--transicao), box-shadow var(--transicao);
 }
 .passo:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+.lojas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .passo-numero {
   display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%;
   background: linear-gradient(135deg, var(--verde-vivo), var(--verde)); color: #fff; font-weight: 800; margin-bottom: 14px;
