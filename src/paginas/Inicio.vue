@@ -29,7 +29,7 @@ const sistemas = [
 const passos = [
   { titulo: 'Instale', texto: `Baixe o ${app.nome} na Google Play (Android) ou na App Store (iPhone).` },
   { titulo: 'Entre', texto: 'Use o seu usuário e a senha de rede da Cotriguaçu.' },
-  { titulo: 'Liberação', texto: 'Aprovadores cadastrados entram direto; nos demais casos, um administrador libera o primeiro acesso.' },
+  { titulo: 'Liberação', texto: 'No primeiro acesso, um administrador da TI libera a sua entrada. Você recebe um aviso quando estiver liberado.' },
   { titulo: 'Aceite e use', texto: 'Leia e aceite os Termos de Uso e o Aviso de Privacidade no aplicativo.' },
 ]
 </script>
